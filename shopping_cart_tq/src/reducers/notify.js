@@ -1,5 +1,6 @@
 import { CHANGE_NOTIFY } from "../constants/actionType";
-const initialState = "Ready to buy!!!";
+import { NOTIFY_READ } from "../constants/message";
+const initialState = NOTIFY_READ;
 const notify = (state = initialState, action) => {
     switch (action.type) {
         case CHANGE_NOTIFY:

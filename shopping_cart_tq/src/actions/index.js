@@ -11,3 +11,16 @@ export const act_change_notify = (message) => {
         payload: message
     }
 }
+export const act_update_cart = (productId, quantity) => {
+    return {
+        type: types.UPDATE_CART,
+        payload: { productId, quantity }
+    }
+}
+
+export const act_delete_cart = (productId) => {
+    return {
+        type: types.DELETE_CART,
+        payload: productId,
+    }
+}

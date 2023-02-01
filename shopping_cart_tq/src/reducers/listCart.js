@@ -1,4 +1,4 @@
-import { BUY_PRODUCT } from "../constants/actionType";
+import { BUY_PRODUCT, UPDATE_CART } from "../constants/actionType";
 import { SHOP_CARTS } from "../constants/shoppingCart";
 let initialState = [];
 // Giỏ hàng được lưu trong localStorage với tên là SHOP_CARTS
@@ -21,10 +21,18 @@ const listCart = (state = initialState, action) => {
             if (index >= 0) {
                 // Sản phẩm đã có trong giỏ hàng --> tăng số lượng              
                 state[index].quantity += parseInt(action.payload.quantity);
+                console.log(state[index].quantity);
             } else {
                 // Sản phẩm chưa có trong giỏ hàng --> add thêm vào
                 state = [...state, { product: action.payload.product, quantity: action.payload.quantity }]
             }
+            //set giỏ hàng vào localStorage
+            localStorage.setItem(SHOP_CARTS, JSON.stringify(state));
+            return [...state];
+        case UPDATE_CART:
+            let { productId, quantity } = action.payload;
+            let indexUpdate = getIndexProduct(productId, state);
+            state[indexUpdate].quantity = quantity;
             //set giỏ hàng vào localStorage
             localStorage.setItem(SHOP_CARTS, JSON.stringify(state));
             return [...state];

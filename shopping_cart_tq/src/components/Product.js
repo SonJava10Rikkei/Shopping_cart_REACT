@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from "react-redux";
 import { useState } from 'react';
 import { act_buy_product, act_change_notify } from '../actions';
+import { NOTIFY_BUY_SUCCESS } from '../constants/message';
 
 export default function Product(props) {
     const dispatch = useDispatch();
@@ -9,7 +10,7 @@ export default function Product(props) {
     let { product } = props;
     const handleBuyProduct = () => {
         dispatch(act_buy_product(product, quantity));
-        dispatch(act_change_notify("Buy product successfull!!!"));
+        dispatch(act_change_notify(NOTIFY_BUY_SUCCESS));
     }
     let elementBuy = "";
     if (product.quantity == 0) {
