@@ -1,0 +1,2 @@
+export const BUY_PRODUCT = "BUY_PRODUCT";
+export const CHANGE_NOTIFY = "CHANGE_NOTIFY";
